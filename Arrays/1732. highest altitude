@@ -1,0 +1,12 @@
+class Solution {
+    public int largestAltitude(int[] gain) {
+        int highest_alt=0;   // zero always be possible highest altitude...
+        int[] ans=new int[gain.length+1];
+        ans[0]=0;
+        for(int i=1;i<=gain.length;i++){
+            ans[i]=gain[i-1] + ans[i-1];
+            if(ans[i]>highest_alt) highest_alt=ans[i];
+        }
+        return highest_alt;
+    }
+}
