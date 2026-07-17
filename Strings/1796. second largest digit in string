@@ -1,0 +1,20 @@
+class Solution {
+    public int secondHighest(String s) {
+        int max=-1;
+        int s_max=-1;
+        for(char ch:s.toCharArray()){
+            if(ch>='0' && ch<='9'){
+                int digit=ch-'0';
+                if(max<digit){
+                    s_max=max;
+                    max=digit;
+                }
+                else if(digit!=max && s_max<digit){
+                    s_max=digit;
+                }
+                
+            }
+        }
+        return s_max;
+    }
+}
