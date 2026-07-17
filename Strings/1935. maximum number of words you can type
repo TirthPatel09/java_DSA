@@ -1,0 +1,23 @@
+class Solution {
+    public int canBeTypedWords(String text, String brokenLetters) {
+       int[] freq_bl=new int[26];
+
+       for(char ch:brokenLetters.toCharArray()) freq_bl[ch-'a']++;
+       int count=0,temp=0;;
+       int i=0,j=0;
+       while(j<text.length()){
+       char ch=text.charAt(j);
+       if(ch==' '){
+        if(temp==0) count++;
+        i=j;
+        temp=0;
+       }
+       else if(freq_bl[ch-'a']!=0){
+        temp++;
+       } 
+       j++;
+       }
+    if(temp==0) count++;
+       return count;
+    }
+}
