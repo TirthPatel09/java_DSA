@@ -1,0 +1,21 @@
+class Solution {
+    public String greatestLetter(String s) {
+      int[] freq_l=new int[26];
+      int[] freq_u=new int[26];
+
+      for(char ch:s.toCharArray()){
+        if(ch>='a' && ch<='z') freq_l[ch-'a']++;
+      }
+       for(char ch:s.toCharArray()){
+        if(ch>='A' && ch<='Z') freq_u[ch-'A']++;
+      }
+      for(char i='z';i>='a';i--){
+        char temp=Character.toUpperCase(i);
+        if(freq_l[i-'a']!=0 && freq_u[temp-'A']!=0){
+            return Character.toString(Character.toUpperCase(i));
+        }
+      }
+      return "";
+
+    }
+}
