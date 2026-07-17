@@ -1,0 +1,43 @@
+/* INSTEAD OF CREATING EXTRA SPACE WE CAN MAKE VALID FUNCTION 
+
+1. RETURN BOOLEAN VALUE.
+2. GIVE CHAR AS PARAMETER IF LIES IN BETWEEN A-Z || a-z so true else false...
+
+*/
+class Solution {
+    public String reverseOnlyLetters(String s) {
+        HashSet<Character> set=new HashSet<>();
+        for(char i='a';i<='z';i++){
+            set.add(i);
+        }
+          for(char i='A';i<='Z';i++){
+            set.add(i);
+        }
+        int i=0;
+        int j=s.length()-1;
+        char[] arr=s.toCharArray();
+        while(i<=j){
+            char a=arr[i];
+            char b=arr[j];
+            if(set.contains(a) && set.contains(b)){
+                char temp=arr[i];
+                arr[i]=arr[j];
+                arr[j]=temp;
+                i++;
+                j--;
+            }
+            else if(!set.contains(a) && set.contains(b)){
+                i++;
+            }
+             else if(set.contains(a) && !set.contains(b)){
+                j--;
+            }
+            else{
+                i++;
+                j--;
+            }
+        }
+        return new String(arr);
+        
+    }
+}
