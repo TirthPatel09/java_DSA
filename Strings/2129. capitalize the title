@@ -1,0 +1,37 @@
+class Solution {
+    public String capitalizeTitle(String title) {
+        title=title.toLowerCase();
+        StringBuilder ans=new StringBuilder();
+        int i=0;
+        int j=0;
+        int len=0;
+        while(j<title.length()){
+            char ch=title.charAt(j);
+            if(ch!=' '){
+                j++;
+                len++;
+            }
+            else{
+                if(len>2){
+                    ans.append(Character.toUpperCase(title.charAt(i)));
+                    ans.append(title.substring(i+1,j+1));
+                }
+                else{
+                    ans.append(title.substring(i,j+1));
+                }
+                    j++;
+                    i=j;
+                    len=0;
+                }
+              }
+              // FOR THE LAST WORD...
+                if(len>2){      
+                    ans.append(Character.toUpperCase(title.charAt(i)));
+                    ans.append(title.substring(i+1,j));
+                }
+                else ans.append(title.substring(i,j));
+                
+              return ans.toString();
+
+            }
+        }
