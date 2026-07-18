@@ -1,0 +1,25 @@
+class Solution {
+    public int getDecimalValue(ListNode head) {
+        ListNode temp=head;
+        int size=0;
+        while(temp!=null){
+            temp=temp.next;
+            size++;
+        }
+        temp=head;
+        int i=0;
+        int[] ans=new int[size];
+        while(temp!=null){
+            ans[i++]=temp.val;
+            temp=temp.next;
+        }
+        int product=1;
+        int res=0;
+        for(int j=size-1;j>=0;j--){
+            res+=ans[j]*product;
+            product*=2;
+        }
+        return res;
+      
+    }
+}
