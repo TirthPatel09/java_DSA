@@ -1,0 +1,32 @@
+class Solution {
+    public int getLeastFrequentDigit(int n) {
+        int a=n;
+        HashMap<Integer,Integer> map=new HashMap<>();
+
+        while(a>0){
+            int digit=a%10;
+            if(map.containsKey(digit)){
+                int freq=map.get(digit);
+                map.put(digit,freq+1);
+            }                              // WE CAN USE FREQUENCY ARRAY ALSO.....
+            else{
+                map.put(digit,1);
+            }
+            a=a/10;
+        }
+        int min_freq=Integer.MAX_VALUE;
+        int ans=0;
+        for(int key:map.keySet()){
+            int value=map.get(key);
+          if(value<min_freq){
+            min_freq=value;
+            ans=key;
+          }
+          else if(value==min_freq){
+            ans=Math.min(ans,key);
+          }
+        }
+        return ans;
+        
+    }
+}
